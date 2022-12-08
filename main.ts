@@ -2,10 +2,19 @@ let number1 = 4;
 let preBtnAPressed = input.buttonIsPressed(Button.A);
 let preBtnBPressed = input.buttonIsPressed(Button.B);
 
+let makejA = () => {
+    number1 -= 1;
+}
+
+let makejB = () => {
+    number1 += 1;
+}
+
+
 let makej = function() {
     if (input.buttonIsPressed(Button.A) && number1 >= 1) {
         if (!preBtnAPressed) {
-            number1 -= 1;
+            makejA();
             preBtnAPressed = true;
         }
     } else {
@@ -14,7 +23,7 @@ let makej = function() {
 
     if (input.buttonIsPressed(Button.B) && number1 <= 9) {
         if (!preBtnBPressed) {
-            number1 += 1;
+            makejB();
             preBtnBPressed = true;
         }
     } else {
