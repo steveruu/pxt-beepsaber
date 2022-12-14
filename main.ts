@@ -1,6 +1,6 @@
-let number1 = 4;
-let preBtnAPressed = input.buttonIsPressed(Button.A);
-let preBtnBPressed = input.buttonIsPressed(Button.B);
+// let number1 = 4;
+// let preBtnAPressed = input.buttonIsPressed(Button.A);
+// let preBtnBPressed = input.buttonIsPressed(Button.B);
 
 // let makejA = () => {
 //     number1 -= 1;
@@ -77,12 +77,11 @@ while (true) {
             console.log(`${startTime} starttime`)
             wasPressedB = true;
         }
-    wasPressedB = false;
         if (wasPressedB) {
             timePressed = ((control.millis() / 1000) - (startTime / 1000));
             console.log(`${timePressed} = ${control.millis()  / 1000 } - ${startTime / 1000}`);
             basic.showNumber(timePressed);
-            wasPressed = true;
+            wasPressedB = false;
         }
     wasPressedB = false;
     }
