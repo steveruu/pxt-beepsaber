@@ -1,6 +1,6 @@
-// let number1 = 4;
-// let preBtnAPressed = input.buttonIsPressed(Button.A);
-// let preBtnBPressed = input.buttonIsPressed(Button.B);
+let number1 = 4;
+let preBtnAPressed = input.buttonIsPressed(Button.A);
+let preBtnBPressed = input.buttonIsPressed(Button.B);
 
 
 // let makejA = () => {
@@ -37,28 +37,49 @@
 
 // input.onButtonPressed(Button.A, makejA); // registrace k eventu onButtonPressed
 // input.onButtonPressed(Button.B, makejB);
-
 let prvniCas = control.millis();
-let wasPressed = input.buttonIsPressed(Button.A);
 
-let count = () => {
-    let timePassedSinceStart;
-    let time;
+// let count = () => {
+//     let timePassedSinceStart;
+//     let time;
 
-    if (input.buttonIsPressed(Button.A)) {
-        if(!wasPressed) {
-            prvniCas = control.millis();
-            wasPressed = true;
-        } else {
-        if (wasPressed) {
-            time = control.millis();
-            timePassedSinceStart = time - (prvniCas / 1000);
-            basic.showNumber(timePassedSinceStart)
-            }
-        }
+//     if (input.buttonIsPressed(Button.A)) {
+//         if(!wasPressed) {
+//             prvniCas = control.millis();
+//             wasPressed = true;
+//         } else {
+//         if (wasPressed) {
+//             time = control.millis();
+//             timePassedSinceStart = time - (prvniCas / 1000);
+//             basic.showNumber(timePassedSinceStart)
+//             }
+//         }
+//     }
+// }
+
+// while (true) {
+//     count()
+// }
+
+let ranDelay = Math.randomRange(500,5000);
+let casPriSpusteni = control.millis();
+music.playTone(Note.C, ranDelay);
+
+let startTime = 0;
+let wasPressed = false;
+let timePressed;
+
+if(input.buttonIsPressed(Button.A)) {
+    if (!wasPressed) {
+        startTime = control.millis();
+        basic.showNumber(timePressed);
+        wasPressed = true;
+    } else if (wasPressed) {
+        timePressed = control.millis(); - startTime;
+        basic.showNumber(timePressed);
     }
 }
 
-while (true) {
-    count()
-}
+
+
+
