@@ -61,6 +61,7 @@ let prvniCas = control.millis();
 // }
 
 let ranDelay = Math.randomRange(500,5000);
+console.log(`sound beeping for ${ranDelay} ms`)
 let casPriSpusteni = control.millis();
 music.playTone(Note.C, ranDelay);
 
@@ -79,7 +80,9 @@ input.onButtonPressed(Button.A, function () {
         timePressed = (control.millis() - startTime) / 1000;
         console.log(`${timePressed} = ${startTime} - ${control.millis()  / 1000 }`);
         basic.showNumber(timePressed);
+        wasPressed = true;
     }
+    wasPressed = false;
 });
 
 
