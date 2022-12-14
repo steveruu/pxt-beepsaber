@@ -2,7 +2,6 @@ let number1 = 4;
 let preBtnAPressed = input.buttonIsPressed(Button.A);
 let preBtnBPressed = input.buttonIsPressed(Button.B);
 
-
 // let makejA = () => {
 //     number1 -= 1;
 //     whaleysans.showNumber(number1)
@@ -66,19 +65,29 @@ let casPriSpusteni = control.millis();
 music.playTone(Note.C, ranDelay);
 
 let startTime = 0;
+let timePressed = 0;
 let wasPressed = false;
-let timePressed;
 
-if(input.buttonIsPressed(Button.A)) {
+input.onButtonPressed(Button.A, function () {
     if (!wasPressed) {
-        startTime = control.millis();
-        basic.showNumber(timePressed);
+        // Start the timer when the button is first pressed
+        startTime = control.millis()  / 1000;
+        console.log(`${startTime} starttime`)
         wasPressed = true;
     } else if (wasPressed) {
-        timePressed = control.millis(); - startTime;
+        // Calculate the time elapsed in seconds and show it on the screen
+        timePressed = (control.millis() - startTime) / 1000;
+        console.log(`${timePressed} = ${startTime} - ${control.millis()  / 1000 }`);
         basic.showNumber(timePressed);
     }
-}
+});
+
+
+
+
+
+
+
 
 
 
