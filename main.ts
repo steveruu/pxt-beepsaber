@@ -69,7 +69,7 @@ let startTime = 0;
 let timePressed = 0;
 let wasPressed = false;
 
-input.onButtonPressed(Button.A, function () {
+if(input.buttonIsPressed(Button.A)) {
     if (!wasPressed) {
         // Start the timer when the button is first pressed
         startTime = control.millis()  / 1000;
@@ -83,7 +83,7 @@ input.onButtonPressed(Button.A, function () {
         wasPressed = true;
     }
     wasPressed = false;
-});
+}
 
 
 
