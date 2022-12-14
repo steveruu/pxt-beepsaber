@@ -85,6 +85,25 @@ input.onButtonPressed(Button.A, function () {
     wasPressed = false;
 });
 
+let wasPressedB = false;
+while (true) {
+    if(input.buttonIsPressed(Button.B)) {
+        if (!wasPressedB) {
+            startTime = control.millis()  / 1000;
+            console.log(`${startTime} starttime`)
+            wasPressedB = true;
+        }
+        
+        if (wasPressedB) {
+            timePressed = (control.millis() - startTime) / 1000;
+            console.log(`${timePressed} = ${startTime} - ${control.millis()  / 1000 }`);
+            basic.showNumber(timePressed);
+            wasPressed = true;
+        }
+    }
+}
+
+
 
 
 
