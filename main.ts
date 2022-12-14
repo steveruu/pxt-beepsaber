@@ -95,8 +95,8 @@ while (true) {
         }
     wasPressed = false;
         if (wasPressedB) {
-            timePressed = (control.millis() - startTime) / 1000;
-            console.log(`${timePressed} = ${control.millis()  / 1000 } - ${startTime}`);
+            timePressed = ((control.millis() / 1000) - (startTime / 1000));
+            console.log(`${timePressed} = ${control.millis()  / 1000 } - ${startTime / 1000}`);
             basic.showNumber(timePressed);
             wasPressed = true;
         }
