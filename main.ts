@@ -78,7 +78,7 @@ input.onButtonPressed(Button.A, function () {
     } else if (wasPressed) {
         // Calculate the time elapsed in seconds and show it on the screen
         timePressed = (control.millis() - startTime) / 1000;
-        console.log(`${timePressed} = ${startTime} - ${control.millis()  / 1000 }`);
+        console.log(`${timePressed} =  ${control.millis()  / 1000 } - ${startTime}`);
         basic.showNumber(timePressed);
         wasPressed = true;
     }
@@ -93,13 +93,14 @@ while (true) {
             console.log(`${startTime} starttime`)
             wasPressedB = true;
         }
-        
+    wasPressed = false;
         if (wasPressedB) {
             timePressed = (control.millis() - startTime) / 1000;
-            console.log(`${timePressed} = ${startTime} - ${control.millis()  / 1000 }`);
+            console.log(`${timePressed} = ${control.millis()  / 1000 } - ${startTime}`);
             basic.showNumber(timePressed);
             wasPressed = true;
         }
+    wasPressed = false;
     }
 }
 
