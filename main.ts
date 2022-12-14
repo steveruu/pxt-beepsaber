@@ -67,9 +67,11 @@ music.playTone(Note.C, ranDelay);
 
 let startTime = 0;
 let timePressed = 0;
+let flooredPassed = Math.floor(timePressed);
 let wasPressed = false;
-
 let wasPressedB = false;
+
+
 while (true) {
     if(input.buttonIsPressed(Button.B)) {
         if (!wasPressedB) {
@@ -79,13 +81,11 @@ while (true) {
         }
         if (wasPressedB) {
             timePressed = ((control.millis() / 1000) - (startTime / 1000));
-            console.log(`${timePressed} = ${control.millis()  / 1000 } - ${startTime / 1000}`);
-            console.log(`duration ${Math.floor(timePressed)}`);
-            
-            basic.showNumber(Math.floor(timePressed));
+            console.log(`${flooredPassed} = ${control.millis()  / 1000 } - ${startTime / 1000}`);
+            console.log(`duration ${flooredPassed}`);
+            basic.showNumber(flooredPassed);
             wasPressedB = false;
         }
-    wasPressedB = false;
     }
 }
 
