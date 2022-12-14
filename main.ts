@@ -80,7 +80,9 @@ while (true) {
         if (wasPressedB) {
             timePressed = ((control.millis() / 1000) - (startTime / 1000));
             console.log(`${timePressed} = ${control.millis()  / 1000 } - ${startTime / 1000}`);
-            basic.showNumber(timePressed);
+            console.log(`duration ${Math.floor(timePressed)}`);
+            
+            basic.showNumber(Math.floor(timePressed));
             wasPressedB = false;
         }
     wasPressedB = false;
