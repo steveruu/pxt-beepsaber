@@ -89,7 +89,7 @@ let wasPressedB = false;
 while (true) {
     if(input.buttonIsPressed(Button.B)) {
         if (!wasPressedB) {
-            startTime = control.millis()  / 1000;
+            startTime = control.millis();
             console.log(`${startTime} starttime`)
             wasPressedB = true;
         }
