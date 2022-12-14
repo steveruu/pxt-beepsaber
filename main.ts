@@ -69,22 +69,6 @@ let startTime = 0;
 let timePressed = 0;
 let wasPressed = false;
 
-input.onButtonPressed(Button.A, function () {
-    if (!wasPressed) {
-        // Start the timer when the button is first pressed
-        startTime = control.millis()  / 1000;
-        console.log(`${startTime} starttime`)
-        wasPressed = true;
-    } else if (wasPressed) {
-        // Calculate the time elapsed in seconds and show it on the screen
-        timePressed = (control.millis() - startTime) / 1000;
-        console.log(`${timePressed} =  ${control.millis()  / 1000 } - ${startTime}`);
-        basic.showNumber(timePressed);
-        wasPressed = true;
-    }
-    wasPressed = false;
-});
-
 let wasPressedB = false;
 while (true) {
     if(input.buttonIsPressed(Button.B)) {
@@ -93,14 +77,14 @@ while (true) {
             console.log(`${startTime} starttime`)
             wasPressedB = true;
         }
-    wasPressed = false;
+    wasPressedB = false;
         if (wasPressedB) {
             timePressed = ((control.millis() / 1000) - (startTime / 1000));
             console.log(`${timePressed} = ${control.millis()  / 1000 } - ${startTime / 1000}`);
             basic.showNumber(timePressed);
             wasPressed = true;
         }
-    wasPressed = false;
+    wasPressedB = false;
     }
 }
 
