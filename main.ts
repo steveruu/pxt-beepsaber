@@ -36,21 +36,21 @@
 
 // input.onButtonPressed(Button.A, makejA); // registrace k eventu onButtonPressed
 // input.onButtonPressed(Button.B, makejB);
-let prvniCas = control.millis();
+// let prvniCas = control.millis();
 
 // let count = () => {
-//     let timePassedSinceStart;
-//     let time;
+//     let casPassedSinceStart;
+//     let cas;
 
 //     if (input.buttonIsPressed(Button.A)) {
-//         if(!wasPressed) {
+//         if(!wasPressedA) {
 //             prvniCas = control.millis();
-//             wasPressed = true;
+//             wasPressedA = true;
 //         } else {
-//         if (wasPressed) {
-//             time = control.millis();
-//             timePassedSinceStart = time - (prvniCas / 1000);
-//             basic.showNumber(timePassedSinceStart)
+//         if (wasPressedA) {
+//             cas = control.millis();
+//             casPassedSinceStart = cas - (prvniCas / 1000);
+//             basic.showNumber(casPassedSinceStart)
 //             }
 //         }
 //     }
@@ -60,32 +60,82 @@ let prvniCas = control.millis();
 //     count()
 // }
 
-let ranDelay = Math.randomRange(500,5000);
-console.log(`sound beeping for ${ranDelay} ms`)
-let casPriSpusteni = control.millis();
-music.playTone(Note.C, ranDelay);
+// let ranDelay = Math.randomRange(500,5000);
+// console.log(`sound beeping for ${ranDelay} ms`)
+// let casPriSpusteni = control.millis();
+// music.playTone(Note.C, ranDelay);
 
-let startTime = 0;
-let timePressed = 0;
-let flooredPassed = Math.floor(timePressed);
-let wasPressed = false;
-let wasPressedB = false;
+// let startcas = 0;
+// let casPressed = 0;
+// let flooredPassed = Math.floor(casPressed);
+// let wasPressedA = false;
+// let wasPressedAB = false;
 
+
+// while (true) {
+//     if(input.buttonIsPressed(Button.B)) {
+//         if (!wasPressedAB) {
+//             startcas = control.millis();
+//             console.log(`${startcas} startcas`)
+//             wasPressedAB = true;
+//         }
+//         if (wasPressedAB) {
+//             casPressed = ((control.millis() / 1000) - (startcas / 1000));
+//             console.log(`${flooredPassed} = ${control.millis()  / 1000 } - ${startcas / 1000}`);
+//             console.log(`duration ${flooredPassed}`);
+//             basic.showNumber(flooredPassed);
+//             wasPressedAB = false;
+//         }
+//     }
+// }
+
+let ranDelay = 0;
+let skore = 0;
+
+let pocatecniCas = 0;
+let konecnyCas = 0;
+
+let jeTlacitkoAZmacknuto = input.buttonIsPressed(Button.A);
+
+function pipni() {
+    ranDelay = Math.randomRange(500, 2000);
+    music.playTone(Note.C4, ranDelay);
+}
+
+function pocitani(cas: number) {
+    if (Math.floor(ranDelay - cas) < 500) 
+    {
+        skore += 1;
+    }
+    
+    basic.showNumber(skore)
+    pipni()
+}
+
+function priStiskuTlacitka() {
+    pocatecniCas = control.millis(); // zacne merit cas
+}
+
+function priPusteniTlacitka() {
+    konecnyCas = control.millis();
+    pocitani((konecnyCas - pocatecniCas));
+}
+
+let wasPressedA = false
+
+pipni()
 
 while (true) {
-    if(input.buttonIsPressed(Button.B)) {
-        if (!wasPressedB) {
-            startTime = control.millis();
-            console.log(`${startTime} starttime`)
-            wasPressedB = true;
+    if (jeTlacitkoAZmacknuto) {
+        if (!wasPressedA) {
+            priStiskuTlacitka();
         }
-        if (wasPressedB) {
-            timePressed = ((control.millis() / 1000) - (startTime / 1000));
-            console.log(`${flooredPassed} = ${control.millis()  / 1000 } - ${startTime / 1000}`);
-            console.log(`duration ${flooredPassed}`);
-            basic.showNumber(flooredPassed);
-            wasPressedB = false;
+        wasPressedA = true;
+    } else {
+        if (wasPressedA) {
+            priPusteniTlacitka();
         }
+        wasPressedA = false;
     }
 }
 
