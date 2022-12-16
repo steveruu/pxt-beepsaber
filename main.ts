@@ -6,7 +6,7 @@ let konecnyCas = 0;
 
 function pipni() {
     ranDelay = Math.randomRange(500, 2000);
-    music.playTone(Note.C, ranDelay);
+    music.playTone(Note.C4, ranDelay);
 }
 
 function pocitej(cas: number) {
@@ -20,29 +20,33 @@ function pocitej(cas: number) {
 }
 
 function stiskTlacitka() {
-    pocatecniCas = control.millis(); // zacne merit cas
+    pocatecniCas = control.millis(); // ulozi pocatecni cas
 }
 
 function releaseTlacitka() {
-    konecnyCas = control.millis();
-    pocitej((konecnyCas - pocatecniCas));
+    konecnyCas = control.millis(); // ulozi konecny cas
+    pocitej((konecnyCas - pocatecniCas)); // delta
 }
 
 let wasPressedA = false;
+pipni(); // nove kolo
 
-pipni()
-
-while (true) {
-    if (input.buttonIsPressed(Button.A)) {
-        if (!wasPressedA) {
-            stiskTlacitka();
-        }
-        wasPressedA = true;
+while (true) { // furt
+    if (skore == 10) {
+        break; // neovereno jestli funguje, nedostal jsem se k 10 vitezstvi
+        basic.showString("game over");
     } else {
-        if (wasPressedA) {
-            releaseTlacitka();
+        if (input.buttonIsPressed(Button.A)) {
+            if (!wasPressedA) {
+                stiskTlacitka();
+            }
+            wasPressedA = true;
+        } else {
+            if (wasPressedA) {
+                releaseTlacitka();
+            }
+            wasPressedA = false;
         }
-        wasPressedA = false;
     }
 }
 
