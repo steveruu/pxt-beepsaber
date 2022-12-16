@@ -4,9 +4,7 @@
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "microphone": "*",
-        "WhaleySansFont": "github:makecode-extensions/whaleysansfont#v1.1.0",
-        "microbit-pxt-timeanddate": "github:bsiever/microbit-pxt-timeanddate#v2.0.33"
+        "microphone": "*"
     },
     "files": [
         "main.blocks",
