@@ -3,14 +3,16 @@ let skore = 0;
 
 let pocatecniCas = 0;
 let konecnyCas = 0;
-let attempts = 0;
+let attempts = -1;
+
+let wasPressedA;
 
 function pipni() {
     ranDelay = Math.randomRange(500, 2000);
     music.playTone(Note.C4, ranDelay);
     
     attempts += 1;
-    console.log(attempts);
+    console.log(`attempts: ${attempts}`);
 }
 
 
@@ -24,38 +26,31 @@ function pocitej(delka: number) {
         }
     }
     
+    console.log(`score: ${skore}`);
     basic.showNumber(skore);
     pipni();
 }
 
-function stiskTlacitka() {
-    pocatecniCas = control.millis(); // ulozi pocatecni cas
-}
-
-function releaseTlacitka() {
-    konecnyCas = control.millis(); // ulozi konecny cas
-    pocitej((konecnyCas - pocatecniCas)); // pocitej() => let delka
-}
-
-let wasPressedA = false;
+wasPressedA = false;
 pipni(); // nove kolo
 
 while (true) {
-    if (skore == 10) {
-        break; // win condition
+    if (attempts < 10 && skore == 10) {
         basic.showString("you win!");
-    } else if (attempts >= 10 && skore != 10) {
-        break; // lose condition
+        break; // win condition
+    } else if (attempts == 10 && skore != 10) {
         basic.showString("you lose!");
+        break; // lose condition
     } else {
         if (input.buttonIsPressed(Button.A)) {
             if (!wasPressedA) {
-                stiskTlacitka();
+                pocatecniCas = control.millis(); // ulozi pocatecni cas
             }
             wasPressedA = true;
         } else {
             if (wasPressedA) {
-                releaseTlacitka();
+                konecnyCas = control.millis(); // ulozi konecny cas
+                pocitej((konecnyCas - pocatecniCas)); // pocitej() => let delka
             }
             wasPressedA = false;
         }
