@@ -10,15 +10,10 @@ let wasPressedA;
 function pipni() {
     ranDelay = Math.randomRange(500, 2000);
     music.playTone(Note.C4, ranDelay);
-    
-    attempts += 1;
-    console.log(`attempts: ${attempts}`);
 }
 
 
 function pocitej(delka: number) {
-    attempts += 1;
-    console.log(`attempts: ${attempts}`);
     
     if (Math.floor(ranDelay - delka) < 750) // celkem lehke to trefit
     {
