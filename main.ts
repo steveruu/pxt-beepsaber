@@ -3,7 +3,7 @@ let skore = 0;
 
 let pocatecniCas = 0;
 let konecnyCas = 0;
-let attempts = -1;
+let attempts = 0;
 
 let wasPressedA;
 
@@ -17,6 +17,9 @@ function pipni() {
 
 
 function pocitej(delka: number) {
+    attempts += 1;
+    console.log(`attempts: ${attempts}`);
+    
     if (Math.floor(ranDelay - delka) < 750) // celkem lehke to trefit
     {
         skore += 1;
@@ -51,6 +54,8 @@ while (true) {
             if (wasPressedA) {
                 konecnyCas = control.millis(); // ulozi konecny cas
                 pocitej((konecnyCas - pocatecniCas)); // pocitej() => let delka
+                attempts += 1;
+                console.log(`attempts: ${attempts}`);
             }
             wasPressedA = false;
         }
