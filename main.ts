@@ -3,10 +3,13 @@ let skore = 0;
 
 let pocatecniCas = 0;
 let konecnyCas = 0;
+let attempts = 0;
 
 function pipni() {
     ranDelay = Math.randomRange(500, 2000);
     music.playTone(Note.C4, ranDelay);
+    attempts += 1; 
+    console.log(attempts);
 }
 
 function pocitej(cas: number) {
