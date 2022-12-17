@@ -37,8 +37,8 @@ pipni(); // nove kolo
 
 while (true) { // furt
     if (skore == 10) {
-        break; // neovereno jestli funguje, nedostal jsem se k 10 vitezstvi
-        basic.showString("game over");
+        break; // neovereno jestli funguje
+        basic.showString("you win!");
     } else {
         if (input.buttonIsPressed(Button.A)) {
             if (!wasPressedA) {
