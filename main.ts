@@ -10,9 +10,13 @@ function pipni() {
 }
 
 function pocitej(cas: number) {
-    if (Math.floor(ranDelay - cas) < 750) 
+    if (Math.floor(ranDelay - cas) < 750) // celkem lehke to trefit
     {
         skore += 1;
+    } else {
+        if (skore > 0) {
+            skore -= 1;
+        }
     }
     
     basic.showNumber(skore);
