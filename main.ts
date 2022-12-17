@@ -8,12 +8,14 @@ let attempts = 0;
 function pipni() {
     ranDelay = Math.randomRange(500, 2000);
     music.playTone(Note.C4, ranDelay);
-    attempts += 1; 
+    
+    attempts += 1;
     console.log(attempts);
 }
 
-function pocitej(cas: number) {
-    if (Math.floor(ranDelay - cas) < 750) // celkem lehke to trefit
+
+function pocitej(delka: number) {
+    if (Math.floor(ranDelay - delka) < 750) // celkem lehke to trefit
     {
         skore += 1;
     } else {
@@ -32,18 +34,18 @@ function stiskTlacitka() {
 
 function releaseTlacitka() {
     konecnyCas = control.millis(); // ulozi konecny cas
-    pocitej((konecnyCas - pocatecniCas)); // delta
+    pocitej((konecnyCas - pocatecniCas)); // pocitej() => let delka
 }
 
 let wasPressedA = false;
 pipni(); // nove kolo
 
-while (true) { // furt
+while (true) {
     if (skore == 10) {
-        break;
+        break; // win condition
         basic.showString("you win!");
     } else if (attempts >= 10 && skore != 10) {
-        break;
+        break; // lose condition
         basic.showString("you lose!");
     } else {
         if (input.buttonIsPressed(Button.A)) {
