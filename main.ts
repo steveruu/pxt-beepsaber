@@ -40,8 +40,11 @@ pipni(); // nove kolo
 
 while (true) { // furt
     if (skore == 10) {
-        break; // neovereno jestli funguje
+        break;
         basic.showString("you win!");
+    } else if (attempts >= 10 && skore != 10) {
+        break;
+        basic.showString("you lose!");
     } else {
         if (input.buttonIsPressed(Button.A)) {
             if (!wasPressedA) {
